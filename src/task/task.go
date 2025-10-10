@@ -95,6 +95,29 @@ func DeleteTask(id int) {
 	createJsonFile(newTasks)
 }
 
+func Mark(id int, status status.Status) {
+	var newTasks []Task
+
+	tasks := readJsonFile("./tasks.json")
+
+	for _, task := range tasks {
+		if id != task.ID {
+			newTasks = append(newTasks, task)
+		} else if id == task.ID {
+			newTask := Task{
+				ID:          task.ID,
+				Description: task.Description,
+				Status:      status,
+				CreatedAt:   task.CreatedAt,
+				UpdatedAt:   time.Now().String(),
+			}
+			newTasks = append(newTasks, newTask)
+		}
+	}
+
+	createJsonFile(newTasks)
+}
+
 func createJsonFile(tasks any) {
 	jsonData, err := json.MarshalIndent(tasks, "", "  ")
 	if err != nil {
