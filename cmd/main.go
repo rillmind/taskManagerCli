@@ -22,5 +22,8 @@ func main() {
 			fmt.Print("Adicionando tarefa!\n")
 		}
 		task.CreateTask(args[1])
+
+	case "listAll":
+		task.ListTasks()
 	}
 }

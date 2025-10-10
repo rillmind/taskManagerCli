@@ -37,17 +37,19 @@ Windows: basta executar normalmente com './task-cli' sem adicionar ou retirar li
 
 - id: int
 - description: string
-- status: enum ou map com 'todo', 'in progress' e 'done'
-- createdAt
-- updatedAt
+- status: enum
+- createdAt: time.Now()
+- updatedAt: time.Now()
 
 ### Funções
 
-- **createTask :** Criar uma task e gerar um json para armazenar a task.
-- **updateTask :** Buscar task pelo id e alterar o 'title' ou 'description' pelo '.json'.
-- **deleteTask :** Buscar task pelo id e excluir do '.json'.
-- **listTasks :** Buscar no '.json' todas as tasks e mostrar na tela. (Pensando em deixar isso
+- **CreateTask :** Criar uma task e gerar um json para armazenar a task.
+- **UpdateTask :** Buscar task pelo id e alterar o 'title' ou 'description' pelo '.json'.
+- **DeleteTask :** Buscar task pelo id e excluir do '.json'.
+- **ListTasks :** Buscar no '.json' todas as tasks e mostrar na tela. (Pensando em deixar isso
 aparecendo o tempo todo)
-- **listTasksDone :** Busca no '.json' apenas as taskas marcadas como 'done'
-- **listTasksNotDone :** Busca no '.json' apenas as taskas marcadas como 'not done'
-- **listTasksInProgress :** Busca no '.json' apenas as taskas marcadas como 'in progress'
+- **ListTasksDone :** Busca no '.json' apenas as taskas marcadas como 'done'
+- **ListTasksNotDone :** Busca no '.json' apenas as taskas marcadas como 'not done'
+- **ListTasksInProgress :** Busca no '.json' apenas as taskas marcadas como 'in progress'
+- **createJsonFile :** Cria o arquivo '.json' com as tasks.
+- **readJsonFile :** Lê o arquivo '.json' com as tasks.

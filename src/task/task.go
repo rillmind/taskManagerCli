@@ -21,9 +21,9 @@ func CreateTask(description string) Task {
 	var tasks []Task
 	id := 0
 
-	_, err := os.Stat("tasks.json")
+	_, err := os.Stat("./tasks.json")
 	if !os.IsNotExist(err) {
-		tasks = readJsonFile("tasks.json")
+		tasks = readJsonFile("./tasks.json")
 		if len(tasks) > 0 {
 			id = tasks[len(tasks)-1].ID
 		}
@@ -43,13 +43,28 @@ func CreateTask(description string) Task {
 	return task
 }
 
+func ListTasks() {
+	var tasks []Task
+
+	_, err := os.Stat("./tasks.json")
+	if !os.IsNotExist(err) {
+		tasks = readJsonFile("./tasks.json")
+		data, err := json.MarshalIndent(tasks, "", "    ")
+		if err != nil {
+			fmt.Println("Erro ao formatar JSON:", err)
+			return
+		}
+		fmt.Println(string(data))
+	}
+}
+
 func createJsonFile(tasks any) {
 	jsonData, err := json.MarshalIndent(tasks, "", "  ")
 	if err != nil {
 		fmt.Println("Erro ao gerar JSON:", err)
 	}
 
-	err = os.WriteFile("tasks.json", jsonData, 0644)
+	err = os.WriteFile("./tasks.json", jsonData, 0777)
 	if err != nil {
 		fmt.Println("Erro ao escrever no arquivo:", err)
 	}
