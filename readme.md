@@ -1,13 +1,13 @@
 # Task Manager CLI
 
-Um gerenciador de tarefas rápidas via linha de comando escrito em Golang.
+A quick command line task manager written in Golang.
 
-## Requisitos
+## Requirements
 
-- Go 1.24.8 ou superior
+- Go 1.24.8 or higher
 - git
 
-## Instalação
+## Installation
 
 Linux:
 
@@ -26,14 +26,14 @@ cd taskManagerCli
 go build -o task-cli ./*/*.go
 ```
 
-obs: Se você estiver no windows, precisa adicionar o binário executável (.exe) às variávies de
-ambiente manualmente. No linux basta digitar sua senha de super usuário. Caso queira utilizar sem
-adicionar às variáveis de ambiente, no Linux: basta excluir a última linha e rodar './task-cli', no
-Windows: basta executar normalmente com './task-cli' sem adicionar ou retirar linhas do comando.
+Note: If you are on Windows, you need to add the executable binary (.exe) to the environment
+variables manually. On Linux, just enter your super user password. If you want to use it without
+add to environment variables, in Linux: just delete the last line and run './task-cli', in
+Windows: just run normally with './task-cli' without adding or removing command lines.
 
-## Informações sobre o código
+## Code information
 
-### Atributos
+### Attributes
 
 - id: int
 - description: string
@@ -41,15 +41,14 @@ Windows: basta executar normalmente com './task-cli' sem adicionar ou retirar li
 - createdAt: time.Now()
 - updatedAt: time.Now()
 
-### Funções
+### Functions
 
-- **CreateTask :** Criar uma task e gerar um json para armazenar a task.
-- **UpdateTask :** Buscar task pelo id e alterar o 'title' ou 'description' pelo '.json'.
-- **DeleteTask :** Buscar task pelo id e excluir do '.json'.
-- **ListTasks :** Buscar no '.json' todas as tasks e mostrar na tela. (Pensando em deixar isso
-aparecendo o tempo todo)
-- **ListTasksDone :** Busca no '.json' apenas as taskas marcadas como 'done'
-- **ListTasksNotDone :** Busca no '.json' apenas as taskas marcadas como 'not done'
-- **ListTasksInProgress :** Busca no '.json' apenas as taskas marcadas como 'in progress'
-- **createJsonFile :** Cria o arquivo '.json' com as tasks.
-- **readJsonFile :** Lê o arquivo '.json' com as tasks.
+- **CreateTask :** Create a task and generate json to store the task.
+- **UpdateTask :** Search task by id and change the 'title' or 'description' by '.json'.
+- **DeleteTask :** Search task by id and delete from '.json'.
+- **ListTasks :** Search all tasks in '.json' and show them on the screen.
+- **ListTasksDone :** Searches in '.json' only the taskas marked as 'done'
+- **ListTasksNotDone :** Searches the '.json' for only taskas marked as 'not done'
+- **ListTasksInProgress :** Searches the '.json' for only taskas marked as 'in progress'
+- **createJsonFile :** Creates the '.json' file with the tasks.
+- **readJsonFile :** Reads the '.json' file with the tasks.
