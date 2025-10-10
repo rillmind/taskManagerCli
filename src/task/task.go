@@ -51,11 +51,34 @@ func ListTasks() {
 		tasks = readJsonFile("./tasks.json")
 		data, err := json.MarshalIndent(tasks, "", "    ")
 		if err != nil {
-			fmt.Println("Erro ao formatar JSON:", err)
+			fmt.Println("Erro formating JSON:", err)
 			return
 		}
 		fmt.Println(string(data))
 	}
+}
+
+func UpdateTask(id int, description string) {
+	var newTasks []Task
+
+	tasks := readJsonFile("./tasks.json")
+
+	for _, task := range tasks {
+		if id != task.ID {
+			newTasks = append(newTasks, task)
+		} else if id == task.ID {
+			newTask := Task{
+				ID:          task.ID,
+				Description: description,
+				Status:      task.Status,
+				CreatedAt:   task.CreatedAt,
+				UpdatedAt:   time.Now().String(),
+			}
+			newTasks = append(newTasks, newTask)
+		}
+	}
+
+	createJsonFile(newTasks)
 }
 
 func DeleteTask(id int) {
@@ -75,15 +98,13 @@ func DeleteTask(id int) {
 func createJsonFile(tasks any) {
 	jsonData, err := json.MarshalIndent(tasks, "", "  ")
 	if err != nil {
-		fmt.Println("Erro ao gerar JSON:", err)
+		fmt.Println("Error generating JSON:", err)
 	}
 
 	err = os.WriteFile("./tasks.json", jsonData, 0777)
 	if err != nil {
-		fmt.Println("Erro ao escrever no arquivo:", err)
+		fmt.Println("Error writing file:", err)
 	}
-
-	fmt.Println("Arquivo pessoas.json criado com sucesso!")
 }
 
 func readJsonFile(filename string) []Task {

@@ -20,19 +20,27 @@ func main() {
 	switch comando {
 	case "add":
 		if *verbose {
-			fmt.Println("Adicionando tarefa!")
+			fmt.Println("Adding task!")
 		}
-		task.CreateTask(args[1])
+		newTask := task.CreateTask(args[1])
+		fmt.Printf("Task add sucessfully (ID: %v)\n", newTask.ID)
 
-	case "listAll":
+	case "list":
 		if *verbose {
 			fmt.Println("Listando tarefas!")
 		}
 		task.ListTasks()
 
+	case "update":
+		if *verbose {
+			fmt.Println("Updating task!")
+		}
+		id, _ := strconv.Atoi(args[1])
+		task.UpdateTask(id, args[2])
+
 	case "delete":
 		if *verbose {
-			fmt.Println("Removendo tarefa")
+			fmt.Println("Deleting task!")
 		}
 		id, _ := strconv.Atoi(args[1])
 		task.DeleteTask(id)
