@@ -58,6 +58,20 @@ func ListTasks() {
 	}
 }
 
+func DeleteTask(id int) {
+	var newTasks []Task
+
+	tasks := readJsonFile("./tasks.json")
+
+	for _, task := range tasks {
+		if id != task.ID {
+			newTasks = append(newTasks, task)
+		}
+	}
+
+	createJsonFile(newTasks)
+}
+
 func createJsonFile(tasks any) {
 	jsonData, err := json.MarshalIndent(tasks, "", "  ")
 	if err != nil {
