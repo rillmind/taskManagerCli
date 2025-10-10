@@ -2,6 +2,8 @@
 
 A quick command line task manager written in Golang.
 
+project URL: https://roadmap.sh/projects/task-tracker
+
 ## Requirements
 
 - Go 1.24.8 or higher
