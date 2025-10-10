@@ -32,7 +32,20 @@ func main() {
 			fmt.Println("Listando tarefas!")
 		}
 
-		task.ListTasks()
+		if len(args) == 1 {
+			task.ListTasks()
+		} else {
+			switch args[1] {
+			case "done":
+				task.ListTasksByStatus(status.DONE)
+
+			case "todo":
+				task.ListTasksByStatus(status.TODO)
+
+			case "in-progress":
+				task.ListTasksByStatus(status.IN_PROGRESS)
+			}
+		}
 
 	case "update":
 		if *verbose {

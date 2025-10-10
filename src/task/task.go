@@ -43,19 +43,50 @@ func CreateTask(description string) Task {
 	return task
 }
 
-func ListTasks() {
+func ListTasks() []Task {
 	var tasks []Task
 
 	_, err := os.Stat("./tasks.json")
 	if !os.IsNotExist(err) {
 		tasks = readJsonFile("./tasks.json")
+
 		data, err := json.MarshalIndent(tasks, "", "    ")
+
 		if err != nil {
 			fmt.Println("Erro formating JSON:", err)
-			return
+			return nil
 		}
+
 		fmt.Println(string(data))
 	}
+	return tasks
+}
+
+func ListTasksByStatus(status status.Status) []Task {
+	var tasks []Task
+	var statusTasks []Task
+
+	_, err := os.Stat("./tasks.json")
+	if !os.IsNotExist(err) {
+		tasks = readJsonFile("./tasks.json")
+
+		for _, task := range tasks {
+			if task.Status == status {
+				statusTasks = append(statusTasks, task)
+			}
+		}
+
+		data, err := json.MarshalIndent(statusTasks, "", "    ")
+
+		if err != nil {
+			fmt.Println("Erro formating JSON:", err)
+			return nil
+		}
+
+		fmt.Println(string(data))
+	}
+
+	return statusTasks
 }
 
 func UpdateTask(id int, description string) {

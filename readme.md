@@ -43,12 +43,11 @@ Windows: just run normally with './task-cli' without adding or removing command 
 
 ### Functions
 
-- **CreateTask :** Create a task and generate json to store the task.
-- **UpdateTask :** Search task by id and change the 'title' or 'description' by '.json'.
+- **CreateTask :** Create a task and generate a json file to store the task.
+- **UpdateTask :** Search task by id and change the 'title' or 'description' on '.json'.
 - **DeleteTask :** Search task by id and delete from '.json'.
 - **ListTasks :** Search all tasks in '.json' and show them on the screen.
-- **ListTasksDone :** Searches in '.json' only the taskas marked as 'done'
-- **ListTasksNotDone :** Searches the '.json' for only taskas marked as 'not done'
-- **ListTasksInProgress :** Searches the '.json' for only taskas marked as 'in progress'
+- **ListTasksByStatus :** Search all tasks in '.json' by status and show them on the screen.
+- **Mark :** Search task by id and change the 'status' on '.json'.
 - **createJsonFile :** Creates the '.json' file with the tasks.
 - **readJsonFile :** Reads the '.json' file with the tasks.
