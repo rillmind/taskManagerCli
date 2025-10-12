@@ -22,7 +22,7 @@ func CreateTask(description string) Task {
 	id := 0
 
 	_, err := os.Stat("./tasks.json")
-	if !os.IsNotExist(err) {
+	if os.IsExist(err) {
 		tasks = readJsonFile("./tasks.json")
 		if len(tasks) > 0 {
 			id = tasks[len(tasks)-1].ID
