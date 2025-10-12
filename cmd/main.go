@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"strconv"
 
 	"github.com/rillmind/taskManagerCli/enum/status"
@@ -10,11 +11,17 @@ import (
 )
 
 func main() {
-	verbose := flag.Bool("v", false, "Activates verbose mode, displaying more operation details.")
+	verbose := flag.Bool("v", false, "Activates verbose mode, displaying more operation details")
+
+	flag.Usage = printUsage
 
 	flag.Parse()
 
 	args := flag.Args()
+	if len(args) == 0 {
+		printUsage()
+		os.Exit(1)
+	}
 
 	comando := args[0]
 
@@ -79,4 +86,33 @@ func main() {
 		id, _ := strconv.Atoi(args[1])
 		task.Mark(id, status.DONE)
 	}
+}
+
+func printUsage() {
+	fmt.Printf(`
+Task Manager CLI - Manage your tasks from the command line
+
+Usage:
+	task-cli [options] <command> [arguments]
+
+Options:
+	-v    Activate verbose mode, displaying more operation details
+
+Commands:
+	add <title>             Create a new task with the given title
+	list                    List all tasks
+	list done               List only completed tasks
+	list todo               List only pending tasks
+	list in-progress        List tasks in progress
+	update <id> <title>     Update the title of a task
+	delete <id>             Delete a task
+	mark-in-progress <id>   Mark a task as in progress
+	mark-done <id>          Mark a task as completed
+
+Examples:
+	task-cli add "Complete project documentation"
+	task-cli list todo
+	task-cli -v update 1 "Updated task title"
+	task-cli mark-done 2
+`)
 }
