@@ -28,7 +28,7 @@ Windows:
 ```sh
 git clone https://github.com/rillmind/taskManagerCli.git
 cd taskManagerCli
-go build -o task-cli.exe .\\cmd\\
+go build -o task-cli.exe .\cmd\
 ```
 
 Note: If you are on Windows, you need to add the executable binary (.exe) to the environment
