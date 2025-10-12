@@ -1,5 +1,6 @@
 .git/
 
 task-cli
+task-cli.exe
 
 tasks.json
