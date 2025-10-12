@@ -1,11 +1,15 @@
-# Task Manager CLI
+<h1 align="center"> Task Manager CLI </h1>
 
+<p align="center">
 A quick command line task manager written in Golang. This application allows you to add, update
 delete, list, and mark the status of tasks. Tasks are stored in a JSON file for persistence.
+</p>
 
-Project URL: https://roadmap.sh/projects/task-tracker
+<p align="center">Project URL: https://roadmap.sh/projects/task-tracker</p>
 
-My solution: https://roadmap.sh/projects/task-tracker/solutions?u=6500425a5ce9f4ca58b8b017
+<p align="center">
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png">
+</p>
 
 ## Requirements
 
@@ -84,3 +88,21 @@ type Task struct {
 - **Mark :** Search task by id and change the 'status' on '.json'.
 - **createJsonFile :** Creates the '.json' file with the tasks.
 - **readJsonFile :** Reads the '.json' file with the tasks.
+
+```go
+func CreateTask(description string) Task
+
+func ListTasks() []Task
+
+func ListTasksByStatus(status status.Status) []Task
+
+func UpdateTask(id int, description string)
+
+func DeleteTask(id int)
+
+func Mark(id int, status status.Status)
+
+func createJsonFile(tasks any)
+
+func readJsonFile(filename string) []Task
+```
