@@ -7,7 +7,3 @@ const (
 	IN_PROGRESS
 	DONE
 )
-
-func (s Status) String() string {
-	return [...]string{"todo", "inProgress", "done"}[s]
-}

@@ -59,6 +59,7 @@ func ListTasks() []Task {
 
 		fmt.Println(string(data))
 	}
+
 	return tasks
 }
 
@@ -151,25 +152,30 @@ func Mark(id int, status status.Status) {
 
 func createJsonFile(tasks any) {
 	jsonData, err := json.MarshalIndent(tasks, "", "  ")
+
 	if err != nil {
 		fmt.Println("Error generating JSON:", err)
 	}
 
 	err = os.WriteFile("./tasks.json", jsonData, 0777)
+
 	if err != nil {
 		fmt.Println("Error writing file:", err)
 	}
 }
 
 func readJsonFile(filename string) []Task {
+	var tasks []Task
+
 	jsonFile, err := os.ReadFile(filename)
+
 	if err != nil {
 		fmt.Println("Error reading file:", err)
 		return nil
 	}
 
-	var tasks []Task
 	err = json.Unmarshal(jsonFile, &tasks)
+
 	if err != nil {
 		fmt.Println("Error parsing JSON:", err)
 		return nil

@@ -19,7 +19,7 @@ Linux:
 ```sh
 git clone https://github.com/rillmind/taskManagerCli.git
 cd taskManagerCli
-go build -o task-cli ./*/*.go
+go build -o task-cli ./cmd
 sudo cp task-cli /usr/bin/
 ```
 
