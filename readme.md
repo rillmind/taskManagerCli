@@ -62,13 +62,17 @@ Windows: just run normally with './task-cli' without adding or removing command 
 
 ## Code information
 
-### Attributes
+### Structs
 
-- id: int
-- description: string
-- status: enum
-- createdAt: time.Now()
-- updatedAt: time.Now()
+```go
+type Task struct {
+	ID          int           `json:"id"`
+	Description string        `json:"description"`
+	Status      status.Status `json:"status"`
+	CreatedAt   string        `json:"createdAt"`
+	UpdatedAt   string        `json:"updatedAt"`
+}
+```
 
 ### Functions
 
