@@ -1,6 +1,7 @@
 # Task Manager CLI
 
-A quick command line task manager written in Golang.
+A quick command line task manager written in Golang. This application allows you to add, update
+delete, list, and mark the status of tasks. Tasks are stored in a JSON file for persistence.
 
 Project URL: https://roadmap.sh/projects/task-tracker
 
