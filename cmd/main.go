@@ -85,6 +85,8 @@ func main() {
 
 		id, _ := strconv.Atoi(args[1])
 		task.Mark(id, status.DONE)
+	default:
+		fmt.Printf("Command not recognized: %v!", args[0])
 	}
 }
 
