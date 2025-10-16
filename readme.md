@@ -44,11 +44,11 @@ Windows: just run normally with './task-cli' without adding or removing command 
 
 ```sh
 # Adding a new task
-./task-cli add "Buy contonete"
+./task-cli add "Buy cotonete"
 # Output: Task added successfully (ID: 1)
 
 # Updating and deleting tasks
-./task-cli update 1 "Buy contonete and snacks"
+./task-cli update 1 "Buy cotonete and snacks"
 ./task-cli delete 1
 
 # Marking a task as in progress or done
